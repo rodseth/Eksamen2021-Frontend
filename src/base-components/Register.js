@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import apiFacade from "../base-facades/apiFacade";
-import {URL} from "./Home";
 
 export default function Register() {
     const initialState = { username: "", password: "" };
@@ -15,22 +14,20 @@ export default function Register() {
 
     const registerUser = e => {
         e.preventDefault();
-        if (URL === "") {
-            setError("Remember to select an API on the Home page.");
-        } else {
         if (user.username !== "" || user.password !== "") {
             apiFacade.register(user)
-            .then(res => setMsg(`${res.username} has been registered.`))
-            .catch(promise => {
-                promise.fullError.then((error) => {
-                    setError(error.message)
+                .then(res => setMsg(`${res.username} has been registered.`))
+                .catch(promise => {
+                    promise.fullError.then((error) => {
+                        setError(error.message)
+                    })
                 })
-            })
             setUser(initialState);
         } else {
             setError("All fields must be filled out.")
         }
-    }};
+
+    };
 
     return (
         <div>
@@ -41,17 +38,17 @@ export default function Register() {
                 <input onChange={handleChange} value={user.username} name="username"></input>
                 <br />
                 <label>Password</label><br />
-                <input 
-                onChange={handleChange} 
-                type="password"
-                value={user.password} 
-                name="password">
+                <input
+                    onChange={handleChange}
+                    type="password"
+                    value={user.password}
+                    name="password">
                 </input>
                 <br /><br />
                 <input type="submit" value="Register" className="btn btn-secondary"></input>
                 <br /><br />
                 <p style={{ color: "red" }}>{error}</p>
-                <p style={{color: "green"}}>{msg}</p>
+                <p style={{ color: "green" }}>{msg}</p>
             </form>
         </div>
     )

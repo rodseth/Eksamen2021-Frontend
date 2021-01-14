@@ -1,11 +1,11 @@
-import { URL } from "../base-components/Home";
+import { URL } from "../utils/settings";
 import apiFacade, { handleHttpErrors } from "../base-facades/apiFacade";
 
 const exampleFacade = () => {
-  
+
   const exampleMethod1 = () => {
     return fetch(URL + "/api/example", apiFacade.makeOptions("GET", true))
-    .then(handleHttpErrors);
+      .then(handleHttpErrors);
   };
 
   return { exampleMethod1 };

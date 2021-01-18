@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import apiFacade from "../base-facades/apiFacade";
 
 export default function Register() {
-    const initialState = { username: "", password: "" };
+    const initialState = { username: "", password: "", firstName: "", lastName: "", age: "", weight: "" };
     const [user, setUser] = useState(initialState);
     const [error, setError] = useState("");
     const [msg, setMsg] = useState("");
@@ -44,6 +44,19 @@ export default function Register() {
                     value={user.password}
                     name="password">
                 </input>
+                <br />
+                <label>Firstname</label><br />
+                <input onChange={handleChange} value={user.firstName} name="firstName"></input>
+                <br />
+                <label>Lastname</label><br />
+                <input onChange={handleChange} value={user.lastName} name="lastName"></input>
+                <br />
+                <label>Age</label><br />
+                <input onChange={handleChange} value={user.age} name="age"></input>
+                <br />
+                <label>Weight</label><br />
+                <input onChange={handleChange} value={user.weight} name="weight"></input>
+                <br />
                 <br /><br />
                 <input type="submit" value="Register" className="btn btn-secondary"></input>
                 <br /><br />

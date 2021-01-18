@@ -51,6 +51,11 @@ function apiFacade() {
     const options = makeOptions("POST", false, {
       username: user.username,
       password: user.password,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      age: user.age,
+      weight: user.weight
+
     });
     return fetch(URL + "/api/users", options)
       .then(handleHttpErrors)
